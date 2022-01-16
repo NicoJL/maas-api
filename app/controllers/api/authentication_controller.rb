@@ -1,4 +1,4 @@
-class AuthenticationController < ApplicationController
+class Api::AuthenticationController < ApplicationController
 	skip_before_action :authenticate, only: [:login]
 
 	def login

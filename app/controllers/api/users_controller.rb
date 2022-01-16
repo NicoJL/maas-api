@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if @user.save
       payload = { user_id: @user.id }
       token = create_token(payload)
-      render json: @user, status: :created, location: @user
+      render json: @user, status: :created, location: api_user_url(@user)
     else
       render json: @user.errors, status: :unprocessable_entity
     end
